@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="repo/gift.css">
     <link rel="stylesheet" href="repo/guestbook.css">
     <link rel="stylesheet" href="repo/hashover.css">
-        <style>
+    <style>
         .loading-spinner {
             display: block;
             width: 20px;
@@ -66,7 +66,7 @@
                 </div>
                 <div class="kepada">
                     <h5>Dengan Hormat Mengundang:</h5>
-                    <h4 id="default"></h4>
+                    <h4 id="default">Tamu Terhormat</h4>
                 </div>
                 <button id="text_popup" class="close" disabled>
                     <div class="button-content">
@@ -168,7 +168,9 @@
             defaultElement.textContent = name;
             defaultElement.classList.remove('hidden'); // Tampilkan elemen
             const hash = name.replace(/\s+/g, '_');
-            window.location.hash = hash;
+            if (window.location.hash !== `#${hash}`) {
+                history.replaceState(null, '', `#${hash}`); // Gunakan replaceState untuk menghindari penambahan history
+            }
         }
 
         // Fungsi untuk menampilkan/menyembunyikan loading
@@ -202,9 +204,8 @@
                 if (hash && names.includes(hash)) {
                     updateInvitationName(hash);
                 } else {
-                    // Jika hash tidak ditemukan, tetap tampilkan loading
-                    console.log('Nama tidak ditemukan, tetap loading...');
-                    return; // Keluar dari fungsi tanpa menampilkan nama default
+                    console.log('Nama tidak ditemukan:', hash);
+                    document.getElementById('default').textContent = 'Tamu Terhormat'; // Tampilkan pesan default
                 }
             } catch (error) {
                 console.error('Error loading names:', error);
@@ -213,7 +214,7 @@
             }
         }
 
-        // Pastikan fungsi loadNames dijalankan setelah DOM siap
+        // Jalankan fungsi loadNames saat DOM siap
         document.addEventListener('DOMContentLoaded', function() {
             loadNames();
         });
@@ -222,14 +223,6 @@
         window.addEventListener('hashchange', function() {
             loadNames();
         });
-
-        function updateInvitationName(name) {
-         const defaultElement = document.getElementById('default');
-         defaultElement.textContent = name;
-         defaultElement.classList.remove('hidden');
-         const hash = name.replace(/\s+/g, '_');
-         history.replaceState(null, '', `#${hash}`);
-     }
     </script>
     
     <script src="repo/navbar-popup.js" defer></script>
