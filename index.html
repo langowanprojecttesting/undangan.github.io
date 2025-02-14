@@ -53,7 +53,7 @@
         }
     </style>
 </head>
-<body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">
+<body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="false">
     <header>
         <div class="popup">
             <div class="popup-wrap">
@@ -171,6 +171,7 @@
             if (window.location.hash !== `#${hash}`) {
                 history.replaceState(null, '', `#${hash}`); // Gunakan replaceState untuk menghindari penambahan history
             }
+            console.log('Nama diperbarui:', name);
         }
 
         // Fungsi untuk menampilkan/menyembunyikan loading
@@ -188,6 +189,7 @@
                 buttonText.style.display = 'block';
                 openButton.disabled = false;
             }
+            console.log('Loading:', show ? 'Aktif' : 'Nonaktif');
         }
 
         // Fungsi untuk membaca daftar nama dari file .txt
@@ -195,12 +197,15 @@
             toggleLoading(true);
             
             try {
-                const response = await fetch('data-input/daftar-nama.txt');
+                const response = await fetch('data-input/daftar-nama.txt?nocache=' + new Date().getTime()); // Tambahkan parameter cache-busting
                 if (!response.ok) throw new Error('File tidak ditemukan atau jaringan bermasalah');
                 const text = await response.text();
                 const names = text.split('\n').map(name => name.trim()).filter(Boolean);
 
                 const hash = decodeURIComponent(window.location.hash.substring(1)).replace(/_/g, ' ');
+                console.log('Hash saat ini:', hash);
+                console.log('Daftar nama:', names);
+
                 if (hash && names.includes(hash)) {
                     updateInvitationName(hash);
                 } else {
@@ -216,12 +221,26 @@
 
         // Jalankan fungsi loadNames saat DOM siap
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM siap, memuat nama...');
             loadNames();
         });
 
         // Tambahkan event listener untuk perubahan hash
         window.addEventListener('hashchange', function() {
+            console.log('Hash berubah, memuat nama...');
             loadNames();
+        });
+
+        // Force refresh hash saat halaman dimuat ulang
+        window.addEventListener('load', function() {
+            console.log('Halaman dimuat ulang, memeriksa hash...');
+            const currentHash = window.location.hash;
+            if (currentHash) {
+                window.location.hash = ''; // Hapus hash sementara
+                setTimeout(() => {
+                    window.location.hash = currentHash; // Setel kembali hash
+                }, 0);
+            }
         });
     </script>
     
