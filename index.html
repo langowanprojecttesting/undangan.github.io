@@ -222,6 +222,14 @@
         window.addEventListener('hashchange', function() {
             loadNames();
         });
+
+        function updateInvitationName(name) {
+         const defaultElement = document.getElementById('default');
+         defaultElement.textContent = name;
+         defaultElement.classList.remove('hidden');
+         const hash = name.replace(/\s+/g, '_');
+         history.replaceState(null, '', `#${hash}`);
+     }
     </script>
     
     <script src="repo/navbar-popup.js" defer></script>
