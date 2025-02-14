@@ -53,7 +53,7 @@
         }
     </style>
 </head>
-<body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="false">
+<body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">
     <header>
         <div class="popup">
             <div class="popup-wrap">
@@ -197,7 +197,8 @@
             toggleLoading(true);
             
             try {
-                const response = await fetch('data-input/daftar-nama.txt?nocache=' + new Date().getTime()); // Tambahkan parameter cache-busting
+                // Tambahkan parameter cache-busting untuk menghindari caching
+                const response = await fetch('data-input/daftar-nama.txt?nocache=' + new Date().getTime());
                 if (!response.ok) throw new Error('File tidak ditemukan atau jaringan bermasalah');
                 const text = await response.text();
                 const names = text.split('\n').map(name => name.trim()).filter(Boolean);
