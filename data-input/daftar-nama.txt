@@ -6,3 +6,4 @@ Kokoti
 Panda
 Madu
 Panjul
+Makan
