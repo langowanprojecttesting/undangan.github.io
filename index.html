@@ -201,11 +201,13 @@
                 const response = await fetch('data-input/daftar-nama.txt?nocache=' + new Date().getTime());
                 if (!response.ok) throw new Error('File tidak ditemukan atau jaringan bermasalah');
                 const text = await response.text();
+
+                // Proses data dengan cepat
                 const names = text.split('\n').map(name => name.trim()).filter(Boolean);
+                console.log('Daftar nama:', names);
 
                 const hash = decodeURIComponent(window.location.hash.substring(1)).replace(/_/g, ' ');
                 console.log('Hash saat ini:', hash);
-                console.log('Daftar nama:', names);
 
                 if (hash && names.includes(hash)) {
                     updateInvitationName(hash); // Perbarui nama dan hash dengan cepat
