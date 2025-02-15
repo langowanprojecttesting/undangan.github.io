@@ -162,18 +162,6 @@
 
     <!-- SCRIPT -->
     <script>
-        // Fungsi untuk mengganti nama undangan di <h4> dan mengupdate URL hash
-        function updateInvitationName(name) {
-            const defaultElement = document.getElementById('default');
-            defaultElement.textContent = name;
-            defaultElement.classList.remove('hidden'); // Tampilkan elemen
-            const hash = name.replace(/\s+/g, '_');
-            if (window.location.hash !== `#${hash}`) {
-                history.replaceState(null, '', `#${hash}`); // Gunakan replaceState untuk menghindari penambahan history
-            }
-            console.log('Nama diperbarui:', name);
-        }
-
         // Fungsi untuk menampilkan/menyembunyikan loading
         function toggleLoading(show) {
             const spinner = document.querySelector('.loading-spinner');
@@ -192,60 +180,41 @@
             console.log('Loading:', show ? 'Aktif' : 'Nonaktif');
         }
 
-        // Fungsi untuk membaca daftar nama dari file .txt
-        async function loadNames() {
-            toggleLoading(true);
-            
+        // Fungsi untuk mengambil hash dari URL dan mengubahnya menjadi nama
+        function updateNameFromHash() {
+            toggleLoading(true); // Tampilkan loading
+
             try {
-                // Tambahkan parameter cache-busting untuk menghindari caching
-                const response = await fetch('data-input/daftar-nama.txt?nocache=' + new Date().getTime());
-                if (!response.ok) throw new Error('File tidak ditemukan atau jaringan bermasalah');
-                const text = await response.text();
+                // Mendapatkan hash dari URL
+                const hash = window.location.hash.substring(1); // Menghapus karakter '#' dari awal hash
 
-                // Proses data dengan cepat
-                const names = text.split('\n').map(name => name.trim()).filter(Boolean);
-                console.log('Daftar nama:', names);
+                // Daftar anchor yang tidak boleh mengubah nama
+                const reservedAnchors = ['ucapan', 'galeri', 'acara', 'cerita', 'gift', 'home', 'profil'];
 
-                const hash = decodeURIComponent(window.location.hash.substring(1)).replace(/_/g, ' ');
-                console.log('Hash saat ini:', hash);
+                // Memeriksa apakah hash mengandung nama tamu atau anchor yang sudah ditentukan
+                if (hash && !reservedAnchors.includes(hash)) {
+                    // Mengganti tanda '_' dengan spasi
+                    const name = hash.replace(/_/g, ' ');
 
-                if (hash && names.includes(hash)) {
-                    updateInvitationName(hash); // Perbarui nama dan hash dengan cepat
-                } else {
-                    console.log('Nama tidak ditemukan:', hash);
-                    document.getElementById('default').textContent = 'Tamu Terhormat'; // Tampilkan pesan default
+                    // Mengambil elemen <h4> dengan id "default"
+                    const nameElement = document.getElementById('default');
+
+                    // Update teks di elemen <h4>
+                    nameElement.textContent = name;
                 }
             } catch (error) {
                 console.error('Error loading names:', error);
             } finally {
-                toggleLoading(false);
+                toggleLoading(false); // Sembunyikan loading setelah selesai
             }
         }
 
-        // Jalankan fungsi loadNames saat DOM siap
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM siap, memuat nama...');
-            loadNames();
-        });
+        // Memanggil fungsi saat halaman dimuat
+        window.addEventListener('load', updateNameFromHash);
 
-        // Tambahkan event listener untuk perubahan hash
-        window.addEventListener('hashchange', function() {
-            console.log('Hash berubah, memuat nama...');
-            loadNames();
-        });
-
-        // Force refresh hash saat halaman dimuat ulang
-        window.addEventListener('load', function() {
-            console.log('Halaman dimuat ulang, memeriksa hash...');
-            const currentHash = window.location.hash;
-            if (currentHash) {
-                window.location.hash = ''; // Hapus hash sementara
-                setTimeout(() => {
-                    window.location.hash = currentHash; // Setel kembali hash
-                }, 0);
-            }
-        });
-    </script>
+        // Memanggil fungsi saat hash URL berubah
+        window.addEventListener('hashchange', updateNameFromHash);
+    </script>        
     
     <script src="repo/navbar-popup.js" defer></script>
     <script src="repo/data-input.js" defer></script>
