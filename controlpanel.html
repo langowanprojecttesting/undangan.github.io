@@ -532,6 +532,82 @@
 
         // Event listener untuk input pencarian
         searchInput.addEventListener('input', searchNames);
+    
+    // Fungsi untuk mengambil konten file dari GitHub
+async function fetchFileContent() {
+    const filePath = 'data-input/data.txt';
+    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+        headers: {
+            'Authorization': `token ${githubToken}`
+        }
+    });
+    const data = await response.json();
+    const content = atob(data.content); // Decode base64 content
+    return { content, sha: data.sha }; // Kembalikan konten dan SHA file
+}
+
+// Fungsi untuk memperbarui konten file di GitHub
+async function updateFileContent(newContent, sha) {
+    const filePath = 'data-input/data.txt';
+    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `token ${githubToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            message: 'Memperbarui informasi groom dan bride', // Pesan commit
+            content: btoa(newContent), // Encode konten baru ke base64
+            sha: sha // SHA file yang akan diperbarui
+        })
+    });
+    return response.ok;
+}
+
+// Fungsi untuk memproses form dan memperbarui file
+document.getElementById('infoForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    // Ambil nilai dari form
+    const groomName = document.getElementById('groomName').value;
+    const brideName = document.getElementById('brideName').value;
+    const groomChildOrder = document.getElementById('groomChildOrder').value;
+    const brideChildOrder = document.getElementById('brideChildOrder').value;
+    const groomFather = document.getElementById('groomFather').value;
+    const brideFather = document.getElementById('brideFather').value;
+    const groomMother = document.getElementById('groomMother').value;
+    const brideMother = document.getElementById('brideMother').value;
+    const groomAddress = document.getElementById('groomAddress').value;
+    const brideAddress = document.getElementById('brideAddress').value;
+
+    // Ambil konten file saat ini
+    const { content, sha } = await fetchFileContent();
+
+    // Perbarui konten file dengan data baru
+    let newContent = content
+        .replace(/groom: .+/, `groom: ${groomName}`)
+        .replace(/bride: .+/, `bride: ${brideName}`)
+        .replace(/anak-ke: .+/, `anak-ke: ${groomChildOrder}`) // Untuk groom
+        .replace(/anak-ke: .+/, `anak-ke: ${brideChildOrder}`) // Untuk bride
+        .replace(/Ayah: .+/, `Ayah: ${groomFather}`) // Untuk groom
+        .replace(/Ayah: .+/, `Ayah: ${brideFather}`) // Untuk bride
+        .replace(/Ibu: .+/, `Ibu: ${groomMother}`) // Untuk groom
+        .replace(/Ibu: .+/, `Ibu: ${brideMother}`) // Untuk bride
+        .replace(/alamat-groom: .+/, `alamat-groom: ${groomAddress}`)
+        .replace(/alamat-bride: .+/, `alamat-bride: ${brideAddress}`);
+
+    // Kirim permintaan untuk memperbarui file
+    const isUpdated = await updateFileContent(newContent, sha);
+    if (isUpdated) {
+        showAlert('Informasi berhasil diperbarui!');
+        // Perbarui tampilan di halaman
+        document.querySelector('.groom').textContent = groomName;
+        document.querySelector('.bride').textContent = brideName;
+    } else {
+        showAlert('Gagal memperbarui informasi.');
+    }
+});
+    
     </script>
     
     <script src="repo/data-input.js"></script>
