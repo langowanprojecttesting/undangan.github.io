@@ -6,16 +6,16 @@ token: https://ia904508.us.archive.org/30/items/key_20250214_202502/key.txt
 
 ("GROOM")
 groom: Hxj
-anak-ke: Ketujuh
-Ayah: Vg
-Ibu: Ff
+groom-anak-ke: Ketujuh
+Ayah-groom: Vg
+Ibu-bride: Ff
 alamat-groom: Jds
 
 ("BRIDE")
 bride: Ss
-anak-ke: Kedua
-Ayah: Ipsum Capulet
-Ibu: Lorem
+bride-anak-ke: Kedua
+Ayah-bride: Ipsum Capulet
+Ibu-groom: Lorem
 alamat-bride: Ff
 
 ("QUOTES 01")
