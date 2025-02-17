@@ -6,7 +6,7 @@ token: https://ia904508.us.archive.org/30/items/key_20250214_202502/key.txt
 
 ("GROOM")
 groom: Samuel Sumilat
-groom-groom-bride-anak-ke: Ketiga
+groom-anak-ke: Ketiga
 Ayah-groom: Vg
 Ibu-bride: Praisy Tombuku
 alamat-groom: Langowan
