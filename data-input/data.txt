@@ -8,14 +8,14 @@ token: https://ia904508.us.archive.org/30/items/key_20250214_202502/key.txt
 groom: Samuel
 groom-anak-ke: Kedua
 Ayah-groom: Adri
-Ibu-bride: Meike
+Ibu-groom: Ira
 alamat-groom: Langowan
 
 ("BRIDE")
 bride: Ss
 bride-anak-ke: Ketiga
 Ayah-bride: Meidy
-Ibu-groom: Ira
+Ibu-bride: Meike
 alamat-bride: Tondano
 
 ("QUOTES 01")
