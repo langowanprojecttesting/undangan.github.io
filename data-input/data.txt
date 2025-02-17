@@ -4,25 +4,25 @@ title: Romeo & Juliet
 
 token: https://ia904508.us.archive.org/30/items/key_20250214_202502/key.txt
 
-backup: https://ia600806.us.archive.org/14/items/token_20250208_1045/token.txt
-
 ("GROOM")
 groom: Romeo Montague
-biodata-groom: Anak pertama dari Bapak Lorem dan Ibu Ipsum
+anak-ke: Pertama
+Ayah: Lorem Montague
+Ibu: Ipsum
 alamat-groom: Langowan
 
 ("BRIDE")
 bride: Juliet Capulet
-biodata-bride: Anak ketiga dari Bapak Ipsum dan Ibu Lorem
+anak-ke: Kedua
+Ayah: Ipsum Capulet
+Ibu: Lorem
 alamat-bride: Tondano
 
 ("QUOTES 01")
-judul-quotes1: One Love United in Christ
 quotes1: "Sebab itu seorang laki-laki akan meninggalkan ayahnya dan ibunya dan bersatu dengan istrinya, sehingga keduanya menjadi satu daging."
 sumber-quotes1: Kejadian 2 ∶ 24
 
 ("QUOTES 02")
-judul-quotes2: 
 quotes2: "Have a good and godly marriage that shows the world Christ's love through how you sacrificially love and serve one another."
 sumber-quotes2: —John Stange
 
