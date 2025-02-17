@@ -5,18 +5,18 @@ title: Romeo & Juliet
 token: https://ia904508.us.archive.org/30/items/key_20250214_202502/key.txt
 
 ("GROOM")
-groom: Hxj
-groom-anak-ke: Ketujuh
+groom: Samuel Sumilat
+groom-groom-bride-anak-ke: Ketiga
 Ayah-groom: Vg
-Ibu-bride: Ff
-alamat-groom: Jds
+Ibu-bride: Praisy Tombuku
+alamat-groom: Langowan
 
 ("BRIDE")
 bride: Ss
 bride-anak-ke: Kedua
 Ayah-bride: Ipsum Capulet
 Ibu-groom: Lorem
-alamat-bride: Ff
+alamat-bride: Tondano
 
 ("QUOTES 01")
 quotes1: "Sebab itu seorang laki-laki akan meninggalkan ayahnya dan ibunya dan bersatu dengan istrinya, sehingga keduanya menjadi satu daging."
