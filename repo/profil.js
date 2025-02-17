@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="card4 left">
                 <div class="box bride-image"></div>
                 <h4 class="bride"></h4>
-                <p>Anak <span class="anak-ke"></span> Bapak <span class="ayah"></span> dan Ibu <span class="ibu"></span></p>
+                <p>Anak <span class="bride-anak-ke"></span> Bapak <span class="ayah-bride"></span> dan Ibu <span class="ibu-bride"></span></p>
                 <div class="item-acara">
                     <span><h5 class="icon">c</h5></span><br>
                     <h5 class="alamat-groom"></h5>
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="card5 right">
                 <div class="box groom-image"></div>
                 <h4 class="groom"></h4>
-                <p>Anak <span class="anak-ke"></span> bapak <span class="ayah"></span> dan ibu <span class="ibu"></span></p>
+                <p>Anak <span class="groom-anak-ke"></span> bapak <span class="ayah-groom"></span> dan ibu <span class="ibu-groom"></span></p>
                 <div class="item-acara">
                     <span><h5 class="icon">c</h5></span><br>
                     <h5 class="alamat-groom"></h5>
