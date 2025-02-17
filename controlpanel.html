@@ -587,12 +587,12 @@ document.getElementById('infoForm').addEventListener('submit', async function(ev
     let newContent = content
         .replace(/groom: .+/, `groom: ${groomName}`)
         .replace(/bride: .+/, `bride: ${brideName}`)
-        .replace(/anak-ke: .+/, `anak-ke: ${groomChildOrder}`) // Untuk groom
-        .replace(/anak-ke: .+/, `anak-ke: ${brideChildOrder}`) // Untuk bride
-        .replace(/Ayah: .+/, `Ayah: ${groomFather}`) // Untuk groom
-        .replace(/Ayah: .+/, `Ayah: ${brideFather}`) // Untuk bride
-        .replace(/Ibu: .+/, `Ibu: ${groomMother}`) // Untuk groom
-        .replace(/Ibu: .+/, `Ibu: ${brideMother}`) // Untuk bride
+        .replace(/anak-ke: .+/, `groom-anak-ke: ${groomChildOrder}`) // Untuk groom
+        .replace(/anak-ke: .+/, `bride-anak-ke: ${brideChildOrder}`) // Untuk bride
+        .replace(/Ayah: .+/, `Ayah-groom: ${groomFather}`) // Untuk groom
+        .replace(/Ayah: .+/, `Ayah-bride: ${brideFather}`) // Untuk bride
+        .replace(/Ibu: .+/, `Ibu-groom: ${groomMother}`) // Untuk groom
+        .replace(/Ibu: .+/, `Ibu-bride: ${brideMother}`) // Untuk bride
         .replace(/alamat-groom: .+/, `alamat-groom: ${groomAddress}`)
         .replace(/alamat-bride: .+/, `alamat-bride: ${brideAddress}`);
 
