@@ -8,14 +8,14 @@ token: https://ia904508.us.archive.org/30/items/key_20250214_202502/key.txt
 groom: Romeo Monatague
 groom-anak-ke: Pertama
 Ayah-groom: Lorem Montague
-Ibu-groom: Ipsum
+Ibu-groom: Ipsum Guemonta
 alamat-groom: Langowan
 
 ("BRIDE")
 bride: Juliet Capulet
 bride-anak-ke: Kedua
 Ayah-bride: Ipsum Capulet
-Ibu-bride: Lorem
+Ibu-bride: Lorem Letcapu
 alamat-bride: Tondano
 
 ("QUOTES 01")
