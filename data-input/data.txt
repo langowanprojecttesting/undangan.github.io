@@ -5,17 +5,17 @@ title: Romeo & Juliet
 token: https://ia904508.us.archive.org/30/items/key_20250214_202502/key.txt
 
 ("GROOM")
-groom: Samuel
-groom-anak-ke: Kedua
-Ayah-groom: Adri
-Ibu-groom: Ira
+groom: Romeo Monatague
+groom-anak-ke: Pertama
+Ayah-groom: Lorem Montague
+Ibu-groom: Ipsum
 alamat-groom: Langowan
 
 ("BRIDE")
-bride: Ss
-bride-anak-ke: Ketiga
-Ayah-bride: Meidy
-Ibu-bride: Meike
+bride: Juliet Capulet
+bride-anak-ke: Kedua
+Ayah-bride: Ipsum Capulet
+Ibu-bride: Lorem
 alamat-bride: Tondano
 
 ("QUOTES 01")
